@@ -6,6 +6,7 @@ const session = require('express-session');
 require('dotenv').config();
 
 const connectRouter = require('./routes/connect'); // Ruta del microservicio
+const clientesRouter = require('./routes/clientes'); // Ruta para clientes
 
 const app = express();
 const PORT = 3000;
@@ -50,7 +51,18 @@ app.post('/authenticate', (req, res) => {
     res.status(200).send({ message: 'Inicio de sesión exitoso' });
 });
 
+app.get('/salir', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).send("Error al cerrar sesión");
+        };
+        res.redirect('/login');
+    });
+});
 
+app.get('/', (req, res) => {
+    res.redirect("/home");
+});
 
 // Ruta principal para mostrar la página de conexión (login)
 app.get('/login', (req, res) => {
@@ -61,8 +73,12 @@ app.get('/home', isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/views/home.html'));
 });
 
+
+
 // Usar el microservicio de conexión
 app.use('/connect', connectRouter);
+
+app.use('/clientes', clientesRouter);  //Ruta para clientes
 
 // Inicia el servidor
 app.listen(PORT, () => {
