@@ -52,12 +52,12 @@ router.get('/cliente/:id', async (req, res) => {
 });
 
 //Falta hacer
-/*// Ruta para agregar un nueva cliente
+// Ruta para agregar un nueva cliente
 router.post('/add', async (req, res) => {
-    const { nombre } = req.body;
+    const { documento, nombre, apellido, fechaNacimiento, direccion, telefono, email, nacionalidad, ciudad, estado, motivoBloqueo } = req.body;
     try {
         const connection = await getConnection();
-        await connection.query(`INSERT INTO clientes (NOMBRE) VALUES (?)`, [nombre]);
+        await connection.query(`INSERT INTO clientes (DOCUMENTO_ID, NOMBRE, APELLIDO, FECHA_NACIMIENTO, DIRECCION, TELEFONO, EMAIL, NACIONALIDAD, CIUDAD, ESTADO, MOTIVO_BLOQUEO) VALUES (?)`, [documento, nombre, apellido, fechaNacimiento, direccion, telefono, email, nacionalidad, ciudad, estado, motivoBloqueo]);
         await connection.close();
         res.json({ success: true });
     } catch (err) {
@@ -65,19 +65,20 @@ router.post('/add', async (req, res) => {
     }
 });
 
+
 // Ruta para actualizar un cliente existente
 router.post('/update/:id', async (req, res) => {
     const { id } = req.params;
-    const { nombre } = req.body;
+    const { documento, nombre, apellido, fechaNacimiento, direccion, telefono, email, nacionalidad, ciudad, estado, motivoBloqueo } = req.body;
     try {
         const connection = await getConnection();
-        await connection.query(`UPDATE clientes SET NOMBRE = ? WHERE cliente = ?`, [nombre, id]);
+        await connection.query(`UPDATE clientes SET DOCUMENTO_ID = ?, NOMBRE = ?, APELLIDO = ?, FECHA_NACIMIENTO = ?, DIRECCION = ?, TELEFONO = ?, EMAIL = ?, NACIONALIDAD = ?, CIUDAD = ?, ESTADO = ?, MOTIVO_BLOQUEO = ? WHERE id_cliente = ?`, [documento, nombre, apellido, fechaNacimiento, direccion, telefono, email, nacionalidad, ciudad, estado, motivoBloqueo, id]);
         await connection.close();
         res.json({ success: true });
     } catch (err) {
         handleDbError(err, res, 'updating cliente');
     }
-});*/
+});
 
 // Ruta para eliminar un cliente
 router.delete('/delete/:id', async (req, res) => {
