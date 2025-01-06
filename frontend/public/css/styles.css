@@ -1,0 +1,11 @@
+/* ======================================== */
+/*                  NavBar                  */
+/* ======================================== */
+
+/* Ajustes de los elementos de la navegación */
+.navbar .navbar-nav {
+  padding-left: 1rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
