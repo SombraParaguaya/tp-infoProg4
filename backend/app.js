@@ -80,6 +80,11 @@ app.use('/connect', connectRouter);
 
 app.use('/clientes', clientesRouter);  //Ruta para clientes
 
+
+// Ruta para 404
+app.use(isAuthenticated, (req, res) => {
+    res.status(404).sendFile(path.join(__dirname, '../frontend/views/404.html'));
+});
 // Inicia el servidor
 app.listen(PORT, () => {
     console.log(`Servidor iniciado en http://localhost:${PORT}`);
