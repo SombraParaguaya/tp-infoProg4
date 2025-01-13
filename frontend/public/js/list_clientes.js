@@ -34,16 +34,7 @@ function showErrorToast(message) {
     });
 }
 
-function toggleDetails(id) {
-    const detailsRow = document.getElementById(`details-row-${id}`);
 
-    // Alternar visibilidad
-    if (detailsRow.classList.contains('d-none')) {
-        detailsRow.classList.remove('d-none');
-    } else {
-        detailsRow.classList.add('d-none');
-    }
-}
 
 document.addEventListener('DOMContentLoaded', function () {
     const apiUrl = '/clientes'; // URL base para los endpoints
@@ -98,6 +89,17 @@ document.addEventListener('DOMContentLoaded', function () {
         `).join('');
     }
 
+    window.toggleDetails = function (id) {
+        const detailsRow = document.getElementById(`details-row-${id}`);
+
+        // Alternar visibilidad
+        if (detailsRow.classList.contains('d-none')) {
+            detailsRow.classList.remove('d-none');
+        } else {
+            detailsRow.classList.add('d-none');
+        }
+    }
+
     // Función para ordenar la tabla
     window.sortTable = function (columnIndex) {
         // Inicializar la dirección si aún no está definida
@@ -135,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para filtrar los clientes según el término de búsqueda
     window.filterClientes = function () {
-        console.log('Filtro activo');
         const searchValue = document.getElementById("searchField").value.toLowerCase();
         const filteredClientes = clientes.filter((cliente) =>
             Object.values(cliente).join(" ").toLowerCase().includes(searchValue)
@@ -187,8 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(error => {
                 console.error('Error al eliminar cliente:', error);
-                errorMessage.style.display = 'block';
-                errorMessage.innerText = 'Error en la conexión con el servidor.';
+                showErrorToast(data.error || 'Error en la conexión con el servidor.');
             });
     }
 });
