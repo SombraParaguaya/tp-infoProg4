@@ -73,6 +73,10 @@ app.get('/home', isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/views/home.html'));
 });
 
+app.get('/list_clientes', isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/views/list_clientes.html'));
+});
+
 
 
 // Usar el microservicio de conexión
