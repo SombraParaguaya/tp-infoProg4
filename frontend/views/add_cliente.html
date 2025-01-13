@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>List Clientes</title>
+    <title>Add Cliente</title>
     <link rel="icon" href="images/Logo.png" type="image/png" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -112,44 +112,105 @@
       </div>
     </div>
 
-    <div class="container container-xl mt-4">
+    <div class="container container-large mt-4">
       <!-- Título y botón para agregar cliente -->
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Clientes</h2>
-        <a class="btn btn-primary" href="/add_cliente"> Añadir Cliente </a>
+        <h2>Añadir Cliente</h2>
       </div>
-
-      <!-- Campo de búsqueda -->
-      <div class="mb-3">
+      <form id="add-cliente-form">
+        <label for="documento_id" class="form-label fw-bold pt-2"
+          >Numero de Documento:</label
+        >
         <input
-          type="text"
-          id="searchField"
           class="form-control"
-          placeholder="Buscar clientes..."
-          oninput="filterClientes()" />
-      </div>
+          type="text"
+          placeholder="Documento del Cliente (Sin Puntos)"
+          aria-label="default input example"
+          id="documento_id"
+          required />
 
-      <!-- Tabla -->
-      <div class="table-responsive">
-        <table class="table table-striped table-hover" id="clientesTable">
-          <thead class="table-dark">
-            <tr>
-              <th onclick="sortTable(0)">ID Cliente</th>
-              <th onclick="sortTable(1)">Nombre</th>
-              <th onclick="sortTable(2)">Apellido</th>
-              <th onclick="sortTable(3)">Documento ID</th>
-              <th onclick="sortTable(4)">Ciudad</th>
-              <th onclick="sortTable(5)">Teléfono</th>
-              <th onclick="sortTable(6)">Email</th>
-              <th onclick="sortTable(7)">Estado</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody class="table-group-divider" id="clientes-list">
-            <!-- Las filas se generan dinámicamente aquí -->
-          </tbody>
-        </table>
-      </div>
+        <label for="nombre" class="form-label fw-bold pt-2">Nombre:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Nombre del Cliente"
+          aria-label="default input example"
+          id="nombre"
+          required />
+
+        <label for="apellido" class="form-label fw-bold pt-2">Apellido:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Apellido del Cliente"
+          aria-label="default input example"
+          id="apellido"
+          required />
+
+        <label for="fecha_nacimiento" class="form-label fw-bold pt-2"
+          >Fecha de Nacimiento:</label
+        >
+        <input
+          class="form-control"
+          type="date"
+          aria-label="default input example"
+          id="fecha_nacimiento"
+          required />
+
+        <label for="ciudad" class="form-label fw-bold pt-2">Ciudad:</label>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Ciudad del Cliente"
+          aria-label="default input example"
+          id="ciudad"
+          required />
+
+        <label for="direccion" class="form-label fw-bold pt-2"
+          >Dirección:</label
+        >
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Dirección del Cliente"
+          aria-label="default input example"
+          id="direccion"
+          required />
+
+        <label for="telefono" class="form-label fw-bold pt-2">Telefono</label>
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            id="telefono"
+            placeholder="+595981456789"
+            required />
+        </div>
+
+        <label for="email" class="form-label fw-bold pt-2">Email:</label>
+        <input
+          class="form-control"
+          type="email"
+          placeholder="Email del Cliente"
+          aria-label="default input example"
+          id="email"
+          required />
+
+        <label for="nacionalidad" class="form-label fw-bold pt-2"
+          >Nacionalidad:</label
+        >
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Nacionalidad del Cliente"
+          aria-label="default input example"
+          id="nacionalidad"
+          required />
+
+        <button type="submit" class="btn btn-primary mt-3">
+          <span class="bi bi-plus"> </span>Agregar Cliente
+        </button>
+      </form>
     </div>
 
     <div
@@ -160,7 +221,7 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
-    <script src="js/list_clientes.js"></script>
+    <script src="js/add_cliente.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
