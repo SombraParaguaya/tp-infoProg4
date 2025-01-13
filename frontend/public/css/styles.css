@@ -3,6 +3,11 @@
 /* ======================================== */
 
 /* Ajustes de los elementos de la navegación */
+.navbar-div {
+  background-color: #ffffff;
+  background-image: url("/images/patterns/cubes.png");
+}
+
 .navbar .navbar-nav {
   padding-left: 1rem;
   font-weight: 500;
@@ -25,3 +30,25 @@
 .container-xl {
   max-width: 1300px;
 }
+
+/* ======================================== */
+/*                Login Page                */
+/* ======================================== */
+
+.login-body {
+  background-color: #ffffff;
+  background-image: url("/images/patterns/escheresque.png");
+}
+
+.login-logo {
+  max-width: 200px;
+}
+
+/* ======================================== */
+/*                  Body                    */
+/* ======================================== */
+
+/* body {
+  background-color: #ffffff;
+  background-image: url("https://www.transparenttextures.com/patterns/climpek.png");
+} */
