@@ -7,6 +7,8 @@ require('dotenv').config();
 
 const connectRouter = require('./routes/connect'); // Ruta del microservicio
 const clientesRouter = require('./routes/clientes'); // Ruta para clientes
+const canchasRouter = require('./routes/canchas'); // Ruta de las canchas
+
 
 const app = express();
 const PORT = 3000;
@@ -84,12 +86,21 @@ app.get('/add_cliente', isAuthenticated, (req, res) => {
 app.get('/upd_cliente', isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/views/upd_cliente.html'));
 });
+app.get('/canchas', isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/views/canchas.html'));
+});
+
+app.get('/add_cancha', isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/views/add_cancha.html'));
+});
+
 
 
 // Usar el microservicio de conexión
 app.use('/connect', connectRouter);
 
 app.use('/clientes', clientesRouter);  //Ruta para clientes
+app.use('/api/canchas', canchasRouter);
 
 
 // Ruta para 404
