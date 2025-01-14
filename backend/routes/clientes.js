@@ -18,7 +18,8 @@ const getConnection = async () => {
 const handleDbError = (err, res, action) => {
     const errorMessage = err?.odbcErrors?.[0]?.message || err.message || 'Unknown database error';
     console.error(`Error al ${action}:`, errorMessage);
-    res.status(500).json({ success: false, error: `Database error while ${action}: ${errorMessage}` });
+    const formattedMessage = errorMessage.split(':').pop().trim()
+    res.status(500).json({ success: false, error: `${formattedMessage}` });
 };
 
 // Ruta para obtener todas las clientes
@@ -69,10 +70,10 @@ router.post('/add', async (req, res) => {
 // Ruta para actualizar un cliente existente
 router.post('/update/:id', async (req, res) => {
     const { id } = req.params;
-    const { documento_id, nombre, apellido, fecha_nacimiento, direccion, telefono, email, nacionalidad, ciudad, estado, motivoBloqueo } = req.body;
+    const { documento_id, nombre, apellido, fecha_nacimiento, direccion, telefono, email, nacionalidad, ciudad, estado, motivo_bloqueo } = req.body;
     try {
         const connection = await getConnection();
-        await connection.query(`UPDATE clientes SET DOCUMENTO_ID = ?, NOMBRE = ?, APELLIDO = ?, FECHA_NACIMIENTO = ?, DIRECCION = ?, TELEFONO = ?, EMAIL = ?, NACIONALIDAD = ?, CIUDAD = ?, ESTADO = ?, MOTIVO_BLOQUEO = ? WHERE id_cliente = ?`, [documento_id, nombre, apellido, fecha_nacimiento, direccion, telefono, email, nacionalidad, ciudad, estado, motivoBloqueo, id]);
+        await connection.query(`UPDATE clientes SET DOCUMENTO_ID = ?, NOMBRE = ?, APELLIDO = ?, FECHA_NACIMIENTO = ?, DIRECCION = ?, TELEFONO = ?, EMAIL = ?, NACIONALIDAD = ?, CIUDAD = ?, ESTADO = ?, MOTIVO_BLOQUEO = ? WHERE id_cliente = ?`, [documento_id, nombre, apellido, fecha_nacimiento, direccion, telefono, email, nacionalidad, ciudad, estado, motivo_bloqueo, id]);
         await connection.close();
         res.json({ success: true });
     } catch (err) {

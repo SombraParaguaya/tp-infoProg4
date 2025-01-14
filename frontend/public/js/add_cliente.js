@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const newDireccion = document.getElementById('direccion').value.trim();
         const newTelefono = document.getElementById('telefono').value.trim();
         const newEmail = document.getElementById('email').value.trim();
-        const newNacionalidad = document.getElementById('nacionalidad').value.trim();
+        const newNacionalidad = document.getElementById('nacionalidad').value.trim() || null;
         console.log({ documento_id: newDocumentoId, nombre: newNombre, apellido: newApellido, fecha_nacimiento: newFechaNacimiento, ciudad: newCiudad, direccion: newDireccion, telefono: newTelefono, email: newEmail, nacionalidad: newNacionalidad });
         fetch('/clientes/add', {
             method: 'POST',

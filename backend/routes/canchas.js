@@ -30,7 +30,7 @@ router.get('/canchas', async (req, res) => {
         const connection = await odbc.connect('DSN=infoProg4;UID=informix;PWD=informix');
         const query = 'SELECT * FROM canchas';
         await connection.close();
-        res.json({success: true, data: []});
+        res.json({ success: true, data: [] });
     } catch (error) {
         handleDbError(error, res, 'obtener canchas');
     }
