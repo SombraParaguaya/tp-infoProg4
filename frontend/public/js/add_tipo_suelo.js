@@ -1,4 +1,5 @@
-
+<<<<<<< HEAD
+<<<<<<< HEAD
 function showErrorToast(message) {
     const toastContainer = document.getElementById('toast-container');
 
@@ -76,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 
-});
+=======
 function showErrorToast(message) {
     const toastContainer = document.getElementById('toast-container');
 
@@ -154,6 +155,8 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 
+>>>>>>> 5b0463165618b3f1c776fd8a2f63275bdcc69dcd
+=======
 function showErrorToast(message) {
     const toastContainer = document.getElementById('toast-container');
 
